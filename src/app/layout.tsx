@@ -1,13 +1,18 @@
 import "@/styles/globals.css"
 
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Montserrat } from "next/font/google"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({ subsets: ["latin"] })
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: "variable",
+  display: "swap",
+  variable: "--font-montserrat",
+})
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -49,7 +54,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@_rdev7",
+    creator: "@HarjjotSinghh",
   },
   icons: {
     icon: "/favicon.ico",
@@ -70,13 +75,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={cn(
           "min-h-screen bg-background antialiased",
-          inter.className
+          montserrat.className
         )}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          forcedTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           {children}
