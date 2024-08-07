@@ -23,7 +23,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer"
 
-export const coords = [
+const coords = [
   { left: 192, top: 16 },
   { left: 240, top: 36 },
   { left: 185, top: 76 },
@@ -69,7 +69,7 @@ export const coords = [
   { left: 220, top: 510 },
 ]
 
-export const scaleUpVariants = {
+const scaleUpVariants = {
   initial: {
     opacity: 0,
     // y: -100,
