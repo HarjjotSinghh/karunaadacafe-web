@@ -366,7 +366,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col items-center">
             <span className="text-2xl font-extrabold font-extrabold tracking-tight tracking-tighter lg:text-3xl xl:text-4xl">
-              1,465 Litre
+              1,565 Litres
             </span>
             <span>Milk Used/Day</span>
           </div>
