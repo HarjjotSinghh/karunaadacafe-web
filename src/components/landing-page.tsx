@@ -1,0 +1,681 @@
+"use client"
+
+import Image from "next/image"
+import Link from "next/link"
+import { motion } from "framer-motion"
+import {
+  FacebookIcon,
+  Instagram,
+  InstagramIcon,
+  Linkedin,
+  MailIcon,
+  MapIcon,
+  PhoneIcon,
+  TwitterIcon,
+  YoutubeIcon,
+} from "lucide-react"
+import { RxHamburgerMenu } from "react-icons/rx"
+
+import { Button } from "./ui/button"
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTrigger,
+} from "./ui/drawer"
+
+const coords = [
+  { left: 192, top: 16 },
+  { left: 240, top: 36 },
+  { left: 185, top: 76 },
+  { left: 250, top: -24 },
+  { left: 230, top: 115 },
+  { left: 129, top: 90 },
+  { left: 140, top: 160 },
+  { left: 215, top: 175 },
+  { left: 170, top: 200 },
+  { left: 140, top: 250 },
+  { left: 180, top: 315 },
+  { left: 190, top: 254 },
+  { left: 110, top: 200 },
+  { left: 65, top: 230 },
+  { left: 140, top: 360 },
+  { left: 195, top: 450 },
+  { left: 235, top: 410 },
+  { left: 270, top: 360 },
+  { left: 325, top: 420 },
+  { left: 315, top: 370 },
+  { left: 280, top: 425 },
+  { left: 180, top: 520 },
+  { left: 130, top: 505 },
+  { left: 144, top: 454 },
+  { left: 90, top: 465 },
+  { left: 60, top: 420 },
+  { left: 40, top: 360 },
+  { left: 30, top: 305 },
+  { left: 10, top: 260 },
+  { left: 50, top: 170 },
+  { left: 0, top: 200 },
+  { left: 15, top: 130 },
+  { left: 60, top: 110 },
+  { left: 95, top: 145 },
+  { left: 180, top: 130 },
+  { left: 80, top: 285 },
+  { left: 125, top: 310 },
+  { left: 85, top: 345 },
+  { left: 210, top: 365 },
+  { left: 170, top: 400 },
+  { left: 110, top: 410 },
+  { left: 250, top: 470 },
+  { left: 220, top: 510 },
+]
+
+shuffleArray(coords)
+
+const scaleUpVariants = {
+  initial: {
+    opacity: 0,
+    // y: -100,
+    transform: "scale(0)",
+    transformOrigin: "bottom",
+  },
+  animate: (index: number) => ({
+    opacity: 1,
+    // y: 0,
+    // left: 0,
+    // right: 0,
+    transform: "scale(1)",
+    transformOrigin: "bottom",
+    transition: {
+      ease: "circInOut",
+      delay: 0.07 * index,
+    },
+  }),
+}
+
+function shuffleArray(array: any[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
+  }
+}
+
+export default function LandingPage() {
+  return (
+    <div className="w-full">
+      <header className="sticky top-0 z-50 flex items-center justify-between bg-background/90 p-4 shadow-xl shadow-black/[0.01] backdrop-blur">
+        <div className="flex w-full items-center justify-between space-x-16">
+          <Image
+            draggable={false}
+            src="/logo.png"
+            alt="Logo"
+            width={300}
+            height={100}
+            className="h-20 w-auto"
+          />
+          <nav className="hidden space-x-6 lg:flex">
+            <a href="#" className="text-lg font-semibold">
+              Home
+            </a>
+            <a href="#" className="text-lg">
+              About Us
+            </a>
+            <a href="#" className="text-lg">
+              Menu
+            </a>
+            <a href="#" className="text-lg">
+              Franchise
+            </a>
+            <a href="#" className="text-lg">
+              Careers
+            </a>
+            <a href="#" className="text-lg">
+              Gallery
+            </a>
+            <a href="#" className="text-lg">
+              Blog
+            </a>
+          </nav>
+        </div>
+        <Drawer direction="top">
+          <DrawerTrigger className="block lg:hidden">
+            <Button
+              size={"icon"}
+              variant="ghost"
+              className="grpup flex items-center gap-2 hover:bg-[#da2a1c]"
+            >
+              <RxHamburgerMenu className="size-5 group-hover:text-white" />
+            </Button>
+          </DrawerTrigger>
+          <DrawerContent>
+            <DrawerHeader>
+              <Image
+                draggable={false}
+                src="/logo.png"
+                alt="Logo"
+                className=" select-none"
+                width={230}
+                height={50}
+              />
+            </DrawerHeader>
+            <DrawerDescription className="p-4">
+              <ul className="flex flex-col gap-2">
+                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                  <Link className="w-fit" href={"#"}>
+                    Home
+                  </Link>
+                </li>
+                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                  <Link className="w-fit" href={"#"}>
+                    About Us
+                  </Link>
+                </li>
+                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                  <Link className="w-fit" href={"#"}>
+                    Menu
+                  </Link>
+                </li>
+                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                  <Link className="w-fit" href={"#"}>
+                    Franchise
+                  </Link>
+                </li>
+                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                  <Link className="w-fit" href={"#"}>
+                    Careers
+                  </Link>
+                </li>
+                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                  <Link className="w-fit" href={"#"}>
+                    Gallery
+                  </Link>
+                </li>
+                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                  <Link className="w-fit" href={"#"}>
+                    Blog
+                  </Link>
+                </li>
+              </ul>
+              <div className="mt-6">
+                <h2 className={`!mb-2 text-xl font-semibold text-foreground`}>
+                  Contact Us
+                </h2>
+                <div className="flex flex-col items-start justify-center gap-2 text-sm">
+                  <Link href={"mailto:info@karunaadacafe.com"} className="">
+                    <p
+                      className={
+                        "text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary"
+                      }
+                    >
+                      info@karunaadacafe.com
+                    </p>
+                  </Link>
+                  <Link href={"tel:+919999999999"} className="">
+                    <p
+                      className={
+                        "text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary"
+                      }
+                    >
+                      +91 999999 99999
+                    </p>
+                  </Link>
+                </div>
+                <div className="mt-6 flex space-x-2">
+                  <Link href={"#"} target="_blank" rel="noreferrer noopener">
+                    <Button
+                      size={"icon"}
+                      className="!size-10 rounded-full bg-[#da2a1c] transition-all duration-300 ease-in-out hover:bg-[#da2a1c]/90"
+                    >
+                      <Linkedin className="h-5 w-5" />
+                    </Button>
+                  </Link>
+                  <Link href={"#"} target="_blank" rel="noreferrer noopener">
+                    <Button
+                      size={"icon"}
+                      className="!size-10 rounded-full bg-[#da2a1c] transition-all duration-300 ease-in-out hover:bg-[#da2a1c]/90"
+                    >
+                      <Instagram className="h-5 w-5" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </DrawerDescription>
+          </DrawerContent>
+        </Drawer>
+      </header>
+      <section className="flex flex-col items-center justify-center gap-6 bg-gray-50 px-4 py-24 md:gap-12 lg:gap-16 lg:px-8 xl:flex-row xl:gap-24">
+        <h2 className="hidden text-balance px-4 text-4xl font-extrabold tracking-tighter lg:px-8 lg:text-5xl xl:block">
+          550+ Outlets
+        </h2>
+
+        <div className="">
+          <h1 className="px-4 text-center text-4xl font-extrabold tracking-tighter md:text-5xl lg:px-8 lg:text-6xl">
+            Serving In:
+          </h1>
+          <div className="relative mt-8 scale-[80%] sm:scale-100">
+            <Image
+              draggable={false}
+              src="/karnataka.svg"
+              width={1000}
+              height={3000}
+              alt="Map"
+              className="w-full max-w-sm select-none"
+            />
+            <div className="absolute inset-0">
+              {coords.map(({ left, top }, index) => {
+                return (
+                  <motion.img
+                    custom={index}
+                    variants={scaleUpVariants}
+                    transition={{ ease: "circInOut" }}
+                    whileInView="animate"
+                    viewport={{ once: true }}
+                    initial="initial"
+                    key={index}
+                    src="/cup.svg"
+                    alt="Cup"
+                    width={100}
+                    height={100}
+                    style={{ left, top }}
+                    className={`absolute inset-0 z-10 size-14 select-none sm:size-16 `}
+                    draggable={false}
+                  />
+                )
+              })}
+            </div>
+          </div>
+        </div>
+        <h2 className="block text-balance px-4 text-4xl font-extrabold tracking-tighter lg:text-5xl xl:hidden">
+          550+ Outlets
+        </h2>
+        <h2 className="-mt-4 text-balance px-4 text-4xl font-extrabold tracking-tighter lg:text-5xl">
+          320+ Cities
+        </h2>
+      </section>
+      <section className="flex flex-col items-center bg-white px-4 py-24 lg:px-8">
+        <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
+          Welcome To KarunaadaCafe
+        </h2>
+        <h3 className="mt-4 text-2xl font-bold tracking-tight lg:text-3xl xl:text-4xl">
+          Brewing Karnataka’s Heritage
+        </h3>
+        <p className="mt-4 max-w-4xl text-center">
+          Step into Karunaada Cafe, where the rich legacy of Karnataka’s coffee
+          culture dances harmoniously with the comforting embrace of chai. Here,
+          every cup is a celebration of tradition and taste, brewed to
+          perfection and served with a touch of Southern warmth. Whether you’re
+          in the mood for the bold notes of our filter coffee or the soothing
+          spices of our masala chai, we’ve got the perfect blend to elevate your
+          day. Pair your drink with our deliciously curated snacks, inspired by
+          the vibrant flavors of Karnataka.
+        </p>
+        <img
+          draggable={false}
+          src="https://images.pexels.com/photos/229493/pexels-photo-229493.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="Cuddle The Kulhad"
+          width={1920}
+          height={1080}
+          className="mt-8 w-full max-w-4xl select-none rounded-lg shadow-xl shadow-black/[0.05]"
+        />
+        <Button size={"lg"} className=" mt-8 h-14 bg-black text-xl text-white">
+          Read Our Story
+        </Button>
+      </section>
+      <section className="bg-[#da2a1c] px-4 py-24 lg:px-8">
+        <h2 className="text-balance text-center text-center text-3xl font-extrabold tracking-tighter text-white md:text-4xl lg:text-5xl xl:text-6xl">
+          Sip, Savor, Share
+        </h2>
+        <p className="mx-auto mt-4 max-w-4xl text-center text-white/90">
+          Take a glimpse into the Karunaada Cafe experience. Our gallery
+          showcases the vibrant atmosphere of our café, where coffee and chai
+          lovers come together. Whether in the bustling streets of Bengaluru or
+          the serene corners of Mysuru, Karunaada Cafe is the place where
+          memories are brewed.
+        </p>
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="w-full rounded bg-white p-4 sm:w-96">
+            <Image
+              draggable={false}
+              width={1920}
+              height={1080}
+              src="/placeholder.png"
+              alt="News 1"
+              className="w-full select-none"
+            />
+            <p className="mt-4 text-center">News 1</p>
+          </div>
+          <div className="w-full rounded bg-white p-4 sm:w-96">
+            <Image
+              draggable={false}
+              width={1920}
+              height={1080}
+              src="/placeholder.png"
+              alt="News 2"
+              className="w-full select-none"
+            />
+            <p className="mt-4 text-center">News 2</p>
+          </div>
+          <div className="w-full rounded bg-white p-4 sm:w-96">
+            <Image
+              draggable={false}
+              width={1920}
+              height={1080}
+              src="/placeholder.png"
+              alt="News 3"
+              className="w-full select-none"
+            />
+            <p className="mt-4 text-center">News 3</p>
+          </div>
+        </div>
+      </section>
+      <section className="flex flex-col items-center bg-black px-4 py-24 lg:px-8">
+        <h2 className="text-balance  text-center text-3xl font-extrabold tracking-tighter text-white md:text-4xl lg:text-5xl xl:text-6xl">
+          Brewed to Perfection, Served with Love
+        </h2>
+        <p className="mx-auto mt-4 max-w-4xl text-center text-white/90">
+          Explore our diverse menu that caters to every taste. From the robust
+          flavors of South Indian filter coffee to the soothing warmth of our
+          chai, each cup is brewed with care. Complement your drink with our
+          selection of snacks, inspired by the rich culinary heritage of
+          Karnataka
+        </p>
+        <Link href={"#"}>
+          <Button
+            size={"lg"}
+            className=" mt-8 h-14 bg-white text-lg text-black hover:bg-white/95"
+          >
+            Browse Our Menu
+          </Button>
+        </Link>
+        {/* <div className="mt-8 flex w-full max-w-4xl justify-around text-white">
+          <div className="flex flex-col items-center">
+            <span className="text-2xl font-extrabold font-extrabold tracking-tight tracking-tighter lg:text-3xl xl:text-4xl">
+              40+
+            </span>
+            <span>Outlets</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-2xl font-extrabold font-extrabold tracking-tight tracking-tighter lg:text-3xl xl:text-4xl">
+              23+
+            </span>
+            <span>Cities</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-2xl font-extrabold font-extrabold tracking-tight tracking-tighter lg:text-3xl xl:text-4xl">
+              0.3 Lakh
+            </span>
+            <span>Kulhads/Day</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-2xl font-extrabold font-extrabold tracking-tight tracking-tighter lg:text-3xl xl:text-4xl">
+              1,565 Litres
+            </span>
+            <span>Milk Used/Day</span>
+          </div>
+        </div> */}
+      </section>
+      <section className="flex flex-col items-center bg-white px-4 py-24 lg:px-8">
+        <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
+          From Coffee Hearts to Chai Souls
+        </h2>
+        <p className="mt-4 max-w-4xl text-center">
+          Karunaada Cafe was born out of a passion for creating a space where
+          coffee and chai lovers can unite. Starting in the heart of Karnataka,
+          where coffee reigns supreme, we’ve expanded our menu to include chai
+          that’s just as comforting and flavorful. Our journey is about bridging
+          the gap between these two beloved beverages and offering a place where
+          everyone feels at home.
+        </p>
+        <img
+          draggable={false}
+          src="https://images.pexels.com/photos/2422700/pexels-photo-2422700.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="KarunaadaCafe Story"
+          width={1920}
+          height={1080}
+          className="mt-8 w-full max-w-4xl select-none rounded-lg shadow-xl shadow-black/[0.05]"
+        />
+        <Button
+          size={"lg"}
+          className="mt-16 h-14 bg-[#da2a1c] text-xl text-white"
+        >
+          Know More!
+        </Button>
+      </section>
+      <section className="flex flex-col items-center bg-gray-100 px-4 py-24 lg:px-8">
+        <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
+          Serve Karnataka’s Favorite Brews
+        </h2>
+        {/* <h3 className="mt-4 text-2xl font-bold tracking-tight lg:text-3xl xl:text-4xl">
+          Why Choose Us?
+        </h3> */}
+        <p className="mt-4 max-w-4xl text-center">
+          Join the Karunaada Cafe family and bring the best of coffee and chai
+          to your community. Our franchise model offers the support you need to
+          create a thriving café that celebrates Karnataka’s dual love for these
+          beverages. Be part of a growing network that’s redefining café culture
+          in the South.
+        </p>
+        <img
+          draggable={false}
+          src="https://images.pexels.com/photos/7125769/pexels-photo-7125769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="Become a Chai Tycoon"
+          width={1920}
+          height={1080}
+          className="mt-8 w-full max-w-4xl select-none rounded-lg shadow-xl shadow-black/[0.05]"
+        />
+      </section>
+      <section className="bg-[#da2a1c] px-4 py-24 lg:px-8">
+        <h2 className="text-balance text-center text-center text-3xl font-extrabold tracking-tighter text-white md:text-4xl lg:text-5xl xl:text-6xl">
+          Brewing Stories, One Sip at a Time
+        </h2>
+        <p className="mx-auto mt-4 max-w-4xl text-center text-white/90">
+          Discover the stories behind your favorite brews on our blog. From the
+          art of making the perfect filter coffee to the cultural nuances of
+          chai in Karnataka, our blog offers insights, tips, and trends for tea
+          and coffee lovers alike.
+        </p>
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="w-full rounded bg-white p-4 sm:w-96">
+            <Image
+              draggable={false}
+              width={1920}
+              height={1080}
+              src="/placeholder.png"
+              alt="Story 1"
+              className="w-full select-none"
+            />
+            <p className="mt-4 text-center">Story 1</p>
+          </div>
+          <div className="w-full rounded bg-white p-4 sm:w-96">
+            <Image
+              draggable={false}
+              width={1920}
+              height={1080}
+              src="/placeholder.png"
+              alt="Story 2"
+              className="w-full select-none"
+            />
+            <p className="mt-4 text-center">Story 2</p>
+          </div>
+          <div className="w-full rounded bg-white p-4 sm:w-96">
+            <Image
+              draggable={false}
+              width={1920}
+              height={1080}
+              src="/placeholder.png"
+              alt="Story 3"
+              className="w-full select-none"
+            />
+            <p className="mt-4 text-center">Story 3</p>
+          </div>
+        </div>
+      </section>
+      <section className="flex flex-col items-center bg-gray-100 px-4 py-24 lg:px-8">
+        <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
+          Let’s Brew a Connection
+        </h2>
+        <p className="mx-auto mt-4 max-w-4xl text-center text-foreground/80">
+          We’d love to hear from you! Whether you’re curious about our menu,
+          interested in franchise opportunities, or just want to chat about your
+          favorite brew, we’re here to help. Visit us at our Bengaluru café or
+          reach out online. Together, let’s create something special.
+        </p>
+        {/* <p className="mx-auto mt-4 max-w-xl text-left text-xl text-foreground/80">
+          Address: Bus Stop 11,7th Cross,Rukmini Nagara, Main Road, near
+          SAROJINI HEALTH CARE, near Bangalore, Nellagadaranahalli, HMT Layout,
+          Karnataka 560073
+          <br /> Ph no: +91 63607 13172
+          <br /> Email: karunaadacafe@gmail.com
+        </p> */}
+        <div className="grid-cols1 mx-auto mt-8 grid w-full max-w-7xl items-start  justify-start gap-8 md:grid-cols-3">
+          <div className=" flex max-w-md flex-col items-start justify-start gap-4">
+            <div className="flex flex-row items-center justify-center gap-4">
+              <MapIcon className="size-8 transition-all duration-300 ease-in-out hover:text-primary" />
+              <h3 className="text-xl font-medium tracking-tight lg:text-2xl">
+                Address
+              </h3>
+            </div>
+            <p className="pl-12 text-base tracking-tight text-foreground/80">
+              Bus Stop 11,7th Cross,Rukmini Nagara, Main Road, near SAROJINI
+              HEALTH CARE, near Bangalore, Nellagadaranahalli, HMT Layout,
+              Karnataka 560073
+            </p>
+          </div>
+          <div className=" flex max-w-md flex-col items-start justify-start gap-4">
+            <div className="flex flex-row items-center justify-center gap-4">
+              <PhoneIcon className="size-8 transition-all duration-300 ease-in-out hover:text-primary" />
+              <h3 className="text-xl font-medium tracking-tight lg:text-2xl">
+                Phone
+              </h3>
+            </div>
+            <p className="pl-12 text-base tracking-tight text-foreground/80 underline">
+              <Link href={"tel:+916360713172"}>+91 63607 13172</Link>
+            </p>
+          </div>
+          <div className=" flex max-w-md flex-col items-start justify-start gap-4">
+            <div className="flex flex-row items-center justify-center gap-4">
+              <MailIcon className="size-8 transition-all duration-300 ease-in-out hover:text-primary" />
+              <h3 className="text-xl font-medium tracking-tight lg:text-2xl">
+                Email
+              </h3>
+            </div>
+            <p className="pl-12 text-base tracking-tight text-foreground/80 underline">
+              <Link href={"mailto:karunaadacafe@gmail.com"}>
+                karunaadacafe@gmail.com
+              </Link>
+            </p>
+          </div>
+        </div>
+      </section>
+      <footer className="bg-black px-4 py-8 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <Image
+            draggable={false}
+            src="/logo.png"
+            alt="Logo"
+            width={300}
+            height={100}
+            className="mb-8 h-20 w-auto"
+          />
+          <div className="flex flex-col items-start justify-start gap-8 text-white lg:flex-row lg:gap-16">
+            <div className="max-w-lg text-balance text-white/80">
+              <h3 className="mb-4 text-xl font-extrabold tracking-tight text-white lg:text-2xl">
+                Head Office
+              </h3>
+              <p>
+                Bus Stop 11,7th Cross,Rukmini Nagara, Main Road, near SAROJINI
+                HEALTH CARE, near Bangalore, Nellagadaranahalli, HMT Layout,
+                Karnataka 560073
+              </p>
+              <br />
+              <Link
+                target="_blank"
+                rel="norefferer noopener"
+                className="underline transition-all duration-300 ease-in-out hover:text-primary"
+                href={"tel:+916360713172"}
+              >
+                +91 63607 13172
+              </Link>
+              <br />
+              <Link
+                target="_blank"
+                rel="norefferer noopener"
+                className="underline transition-all duration-300 ease-in-out hover:text-primary"
+                href={"mailto:karunaadacafe@gmail.com"}
+              >
+                karunaadacafe@gmail.com
+              </Link>
+            </div>
+            <div className="flex flex-col items-start justify-start gap-4">
+              <h3 className="text-xl font-extrabold tracking-tight lg:text-2xl">
+                Quick Links
+              </h3>
+              <div className="flex flex-col items-start justify-start gap-2 text-white/80">
+                <Link
+                  href={"#"}
+                  className="transition-all duration-300 ease-in-out hover:text-primary"
+                >
+                  Contact
+                </Link>
+                <Link
+                  href={"#"}
+                  className="transition-all duration-300 ease-in-out hover:text-primary"
+                >
+                  Franchise
+                </Link>
+                <Link
+                  href={"#"}
+                  className="transition-all duration-300 ease-in-out hover:text-primary"
+                >
+                  Careers
+                </Link>
+                <Link
+                  href={"#"}
+                  className="transition-all duration-300 ease-in-out hover:text-primary"
+                >
+                  Gallery
+                </Link>
+                <Link
+                  href={"#"}
+                  className="transition-all duration-300 ease-in-out hover:text-primary"
+                >
+                  Blog
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="mt-16 flex justify-start space-x-4 text-white/80">
+            <a
+              href="#"
+              className="text-2xl font-extrabold tracking-tight lg:text-3xl xl:text-4xl"
+            >
+              <FacebookIcon className="size-6 transition-all duration-300 ease-in-out hover:text-primary" />
+            </a>
+            <a
+              href="#"
+              className="text-2xl font-extrabold tracking-tight lg:text-3xl xl:text-4xl"
+            >
+              <TwitterIcon className="size-6 transition-all duration-300 ease-in-out hover:text-primary" />
+            </a>
+            <a
+              href="#"
+              className="text-2xl font-extrabold tracking-tight lg:text-3xl xl:text-4xl"
+            >
+              <InstagramIcon className="size-6 transition-all duration-300 ease-in-out hover:text-primary" />
+            </a>
+            <a
+              href="#"
+              className="text-2xl font-extrabold tracking-tight lg:text-3xl xl:text-4xl"
+            >
+              <YoutubeIcon className="size-6 transition-all duration-300 ease-in-out hover:text-primary" />
+            </a>
+          </div>
+          <p className="mt-8 text-left text-white">
+            © 2024 KarunaadaCafe. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+  )
+}
