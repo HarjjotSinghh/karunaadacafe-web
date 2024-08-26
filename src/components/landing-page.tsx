@@ -123,6 +123,7 @@ const plans = [
 ]
 
 const outlets = [
+  { name: "Haveri", number: 1 },
   {
     name: "Chitradurga",
     number: 1,
