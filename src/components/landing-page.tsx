@@ -3,17 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import {
-  FacebookIcon,
-  Instagram,
-  InstagramIcon,
-  Linkedin,
-  MailIcon,
-  MapIcon,
-  PhoneIcon,
-  TwitterIcon,
-  YoutubeIcon,
-} from "lucide-react"
+import { FacebookIcon, Instagram, InstagramIcon, Linkedin } from "lucide-react"
 import { RxHamburgerMenu } from "react-icons/rx"
 
 import { Button } from "./ui/button"
@@ -73,18 +63,93 @@ const coords = [
 
 shuffleArray(coords)
 
+const plans = [
+  {
+    name: "Classic Plan",
+    price: "₹99,000",
+    features: [
+      "Karunaada special tea powder kit (9 varieties of tea powder)",
+      "Tea preparation vessel and 3feet stove",
+      "5 days training for 2 members",
+      "Brass tea kettle 6ltr and mini burner",
+      "1 box tea glass cup (100pc)",
+      "2 t-shirts",
+      "Shop setup plan",
+      "Franchise fees",
+      "10 users included",
+      "2GB of storage",
+      "Email support",
+      "Help center access",
+    ],
+  },
+  {
+    name: "Platinum Plan",
+    price: "₹4,49,000",
+    features: [
+      "Karunaada special tea powder kit (9 varieties tea powder)",
+      "5 kg coffee powder",
+      "6 t-shirts",
+      "5 days training for 4 members",
+      "3D name board (3*10)",
+      "3D logo and menu",
+      "Branded double door fridge",
+      "Oven, french fries machine double, Sujatha mixer",
+      "Coffee filter machine",
+      "Canopy",
+      "Shop setup up to 150 area square meter",
+      "PVC for wall and for seal wall",
+      "Stainless steel tea counter with milk hot case with electric and burner (2*3)",
+      "Stainless steel Biscuit display counter with hot case (2*3)",
+      "Stainless steel pickup counter with two shelf",
+      "Tea kettle and one mini burner",
+      "Tea preparation brass vessel and 3 feet single burner",
+      "Kitchen items",
+      "Stainless steel square tea cup stand",
+      "1 box tea glass cups (144pc)",
+      "Packing material",
+      "Sitting stool (10pc)",
+      "Sitting 4 seater 2 table",
+      "Water purifier",
+      "Electric stove",
+      "Government certified certificate",
+      "20 users included",
+      "5GB of storage",
+      "Email support",
+      "Help center access",
+      "Phone support",
+      "Community access",
+    ],
+  },
+]
+
+const outlets = [
+  {
+    name: "Chitradurga",
+    number: 1,
+  },
+  {
+    name: "Yadgiri",
+    number: 1,
+  },
+  {
+    name: "Bangalore Urban",
+    number: 9,
+  },
+  {
+    name: "Bangalore Rural",
+    number: 1,
+  },
+]
+
 const scaleUpVariants = {
   initial: {
     opacity: 0,
-    // y: -100,
     transform: "scale(0)",
     transformOrigin: "bottom",
   },
   animate: (index: number) => ({
     opacity: 1,
-    // y: 0,
-    // left: 0,
-    // right: 0,
+
     transform: "scale(1)",
     transformOrigin: "bottom",
     transition: {
@@ -105,154 +170,174 @@ export default function LandingPage() {
   return (
     <div className="w-full">
       <header className="sticky top-0 z-50 flex items-center justify-between bg-background/90 p-4 shadow-xl shadow-black/[0.01] backdrop-blur">
-        <div className="flex w-full items-center justify-between space-x-16">
-          <Image
-            draggable={false}
-            src="/logo.png"
-            alt="Logo"
-            width={300}
-            height={100}
-            className="h-20 w-auto"
-          />
-          <nav className="hidden space-x-6 lg:flex">
-            <a href="#" className="text-lg font-semibold">
-              Home
-            </a>
-            <a href="#" className="text-lg">
-              About Us
-            </a>
-            <a href="#" className="text-lg">
-              Menu
-            </a>
-            <a href="#" className="text-lg">
-              Franchise
-            </a>
-            <a href="#" className="text-lg">
-              Careers
-            </a>
-            <a href="#" className="text-lg">
-              Gallery
-            </a>
-            <a href="#" className="text-lg">
-              Blog
-            </a>
-          </nav>
+        <div className="mx-auto w-full max-w-7xl">
+          <div className="flex w-full items-center justify-between space-x-16">
+            <Image
+              draggable={false}
+              src="/logo.png"
+              alt="Logo"
+              width={300}
+              height={100}
+              className="h-20 w-auto"
+            />
+            <nav className="hidden space-x-6 lg:flex">
+              <a href="#" className="text-lg font-semibold">
+                Home
+              </a>
+              <a href="#" className="text-lg">
+                About Us
+              </a>
+              <a href="#" className="text-lg">
+                Menu
+              </a>
+              <a href="#" className="text-lg">
+                Franchise
+              </a>
+              <a href="#" className="text-lg">
+                Careers
+              </a>
+              <a href="#" className="text-lg">
+                Gallery
+              </a>
+              <a href="#" className="text-lg">
+                Blog
+              </a>
+            </nav>
+          </div>
+          <Drawer direction="top">
+            <DrawerTrigger className="block lg:hidden">
+              <Button
+                size={"icon"}
+                variant="ghost"
+                className="grpup flex items-center gap-2 hover:bg-[#da2a1c]"
+              >
+                <RxHamburgerMenu className="size-5 group-hover:text-white" />
+              </Button>
+            </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader>
+                <Image
+                  draggable={false}
+                  src="/logo.png"
+                  alt="Logo"
+                  className=" select-none"
+                  width={230}
+                  height={50}
+                />
+              </DrawerHeader>
+              <DrawerDescription className="p-4">
+                <ul className="flex flex-col gap-2">
+                  <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                    <Link className="w-fit" href={"#"}>
+                      Home
+                    </Link>
+                  </li>
+                  <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                    <Link className="w-fit" href={"#"}>
+                      About Us
+                    </Link>
+                  </li>
+                  <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                    <Link className="w-fit" href={"#"}>
+                      Menu
+                    </Link>
+                  </li>
+                  <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                    <Link className="w-fit" href={"#"}>
+                      Franchise
+                    </Link>
+                  </li>
+                  <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                    <Link className="w-fit" href={"#"}>
+                      Careers
+                    </Link>
+                  </li>
+                  <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                    <Link className="w-fit" href={"#"}>
+                      Gallery
+                    </Link>
+                  </li>
+                  <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                    <Link className="w-fit" href={"#"}>
+                      Blog
+                    </Link>
+                  </li>
+                </ul>
+                <div className="mt-6">
+                  <h2 className={`!mb-2 text-xl font-semibold text-foreground`}>
+                    Contact Us
+                  </h2>
+                  <div className="flex flex-col items-start justify-center gap-2 text-sm">
+                    <Link href={"mailto:info@karunaadacafe.com"} className="">
+                      <p
+                        className={
+                          "text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary"
+                        }
+                      >
+                        info@karunaadacafe.com
+                      </p>
+                    </Link>
+                    <Link href={"tel:+919999999999"} className="">
+                      <p
+                        className={
+                          "text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary"
+                        }
+                      >
+                        +91 999999 99999
+                      </p>
+                    </Link>
+                  </div>
+                  <div className="mt-6 flex space-x-2">
+                    <Link href={"#"} target="_blank" rel="noreferrer noopener">
+                      <Button
+                        size={"icon"}
+                        className="!size-10 rounded-full bg-[#da2a1c] transition-all duration-300 ease-in-out hover:bg-[#da2a1c]/90"
+                      >
+                        <Linkedin className="h-5 w-5" />
+                      </Button>
+                    </Link>
+                    <Link href={"#"} target="_blank" rel="noreferrer noopener">
+                      <Button
+                        size={"icon"}
+                        className="!size-10 rounded-full bg-[#da2a1c] transition-all duration-300 ease-in-out hover:bg-[#da2a1c]/90"
+                      >
+                        <Instagram className="h-5 w-5" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </DrawerDescription>
+            </DrawerContent>
+          </Drawer>
         </div>
-        <Drawer direction="top">
-          <DrawerTrigger className="block lg:hidden">
-            <Button
-              size={"icon"}
-              variant="ghost"
-              className="grpup flex items-center gap-2 hover:bg-[#da2a1c]"
-            >
-              <RxHamburgerMenu className="size-5 group-hover:text-white" />
-            </Button>
-          </DrawerTrigger>
-          <DrawerContent>
-            <DrawerHeader>
-              <Image
-                draggable={false}
-                src="/logo.png"
-                alt="Logo"
-                className=" select-none"
-                width={230}
-                height={50}
-              />
-            </DrawerHeader>
-            <DrawerDescription className="p-4">
-              <ul className="flex flex-col gap-2">
-                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                  <Link className="w-fit" href={"#"}>
-                    Home
-                  </Link>
-                </li>
-                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                  <Link className="w-fit" href={"#"}>
-                    About Us
-                  </Link>
-                </li>
-                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                  <Link className="w-fit" href={"#"}>
-                    Menu
-                  </Link>
-                </li>
-                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                  <Link className="w-fit" href={"#"}>
-                    Franchise
-                  </Link>
-                </li>
-                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                  <Link className="w-fit" href={"#"}>
-                    Careers
-                  </Link>
-                </li>
-                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                  <Link className="w-fit" href={"#"}>
-                    Gallery
-                  </Link>
-                </li>
-                <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                  <Link className="w-fit" href={"#"}>
-                    Blog
-                  </Link>
-                </li>
-              </ul>
-              <div className="mt-6">
-                <h2 className={`!mb-2 text-xl font-semibold text-foreground`}>
-                  Contact Us
-                </h2>
-                <div className="flex flex-col items-start justify-center gap-2 text-sm">
-                  <Link href={"mailto:info@karunaadacafe.com"} className="">
-                    <p
-                      className={
-                        "text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary"
-                      }
-                    >
-                      info@karunaadacafe.com
-                    </p>
-                  </Link>
-                  <Link href={"tel:+919999999999"} className="">
-                    <p
-                      className={
-                        "text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary"
-                      }
-                    >
-                      +91 999999 99999
-                    </p>
-                  </Link>
-                </div>
-                <div className="mt-6 flex space-x-2">
-                  <Link href={"#"} target="_blank" rel="noreferrer noopener">
-                    <Button
-                      size={"icon"}
-                      className="!size-10 rounded-full bg-[#da2a1c] transition-all duration-300 ease-in-out hover:bg-[#da2a1c]/90"
-                    >
-                      <Linkedin className="h-5 w-5" />
-                    </Button>
-                  </Link>
-                  <Link href={"#"} target="_blank" rel="noreferrer noopener">
-                    <Button
-                      size={"icon"}
-                      className="!size-10 rounded-full bg-[#da2a1c] transition-all duration-300 ease-in-out hover:bg-[#da2a1c]/90"
-                    >
-                      <Instagram className="h-5 w-5" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </DrawerDescription>
-          </DrawerContent>
-        </Drawer>
       </header>
       <section className="flex flex-col items-center justify-center gap-6 bg-gray-50 px-4 py-24 md:gap-12 lg:gap-16 lg:px-8 xl:flex-row xl:gap-24">
-        <h2 className="hidden text-balance px-4 text-4xl font-extrabold tracking-tighter lg:px-8 lg:text-5xl xl:block">
-          550+ Outlets
-        </h2>
+        {/* <h2 className="hidden text-balance px-4 text-2xl font-extrabold tracking-tighter lg:px-8 lg:text-3xl xl:block">
+          Chitradurga - 1 <br />
+          Yadgiri - 1<br /> Bangalore Urban - 9<br /> Bangalore Rural - 1<br />
+        </h2> */}
 
-        <div className="">
-          <h1 className="px-4 text-center text-4xl font-extrabold tracking-tighter md:text-5xl lg:px-8 lg:text-6xl">
+        <div className="flex w-fit flex-col items-start justify-start gap-4">
+          <h1 className=" text-left text-4xl font-extrabold tracking-tighter md:text-5xl lg:text-6xl">
             Serving In:
           </h1>
+          <div className="flex flex-col items-start justify-start gap-4">
+            {outlets.map((outlet, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-start justify-start gap-2"
+              >
+                <h2 className="text-balance text-2xl font-extrabold tracking-tighter lg:text-3xl xl:block">
+                  {outlet.name}
+                </h2>
+                <h2 className="text-balance text-xl font-bold tracking-tighter lg:text-2xl xl:block">
+                  {outlet.number} {outlet.number > 1 ? "Outlets" : "Outlet"}
+                </h2>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="w-fit">
           <div className="relative mt-8 scale-[80%] sm:scale-100">
             <Image
               draggable={false}
@@ -286,12 +371,6 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-        <h2 className="block text-balance px-4 text-4xl font-extrabold tracking-tighter lg:text-5xl xl:hidden">
-          550+ Outlets
-        </h2>
-        <h2 className="-mt-4 text-balance px-4 text-4xl font-extrabold tracking-tighter lg:text-5xl">
-          320+ Cities
-        </h2>
       </section>
       <section className="flex flex-col items-center bg-white px-4 py-24 lg:px-8">
         <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
@@ -380,40 +459,35 @@ export default function LandingPage() {
           selection of snacks, inspired by the rich culinary heritage of
           Karnataka
         </p>
-        <Link href={"#"}>
-          <Button
-            size={"lg"}
-            className=" mt-8 h-14 bg-white text-lg text-black hover:bg-white/95"
-          >
-            Browse Our Menu
-          </Button>
-        </Link>
-        {/* <div className="mt-8 flex w-full max-w-4xl justify-around text-white">
-          <div className="flex flex-col items-center">
-            <span className="text-2xl font-extrabold font-extrabold tracking-tight tracking-tighter lg:text-3xl xl:text-4xl">
-              40+
-            </span>
-            <span>Outlets</span>
+
+        <div className="mt-8 flex flex-col items-center justify-center gap-8 ">
+          <div className="bg-white/10 py-2">
+            <Image
+              draggable={false}
+              src="/menu-english.jpg"
+              alt="Menu"
+              width={400}
+              height={400}
+              className="h-auto w-full select-none lg:max-w-[1000px]"
+            />
+            <figcaption className="mt-2 text-center text-base text-white/90">
+              Karunaada Cafe Menu in English
+            </figcaption>
           </div>
-          <div className="flex flex-col items-center">
-            <span className="text-2xl font-extrabold font-extrabold tracking-tight tracking-tighter lg:text-3xl xl:text-4xl">
-              23+
-            </span>
-            <span>Cities</span>
+          <div className="bg-white/10 py-2">
+            <Image
+              draggable={false}
+              src="/menu.jpg"
+              alt="Menu"
+              width={400}
+              height={400}
+              className="h-auto w-full select-none lg:max-w-[1000px]"
+            />
+            <figcaption className="mt-2 text-center text-base text-white/90">
+              Karunaada Cafe Menu in Kannada
+            </figcaption>
           </div>
-          <div className="flex flex-col items-center">
-            <span className="text-2xl font-extrabold font-extrabold tracking-tight tracking-tighter lg:text-3xl xl:text-4xl">
-              0.3 Lakh
-            </span>
-            <span>Kulhads/Day</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-2xl font-extrabold font-extrabold tracking-tight tracking-tighter lg:text-3xl xl:text-4xl">
-              1,565 Litres
-            </span>
-            <span>Milk Used/Day</span>
-          </div>
-        </div> */}
+        </div>
       </section>
       <section className="flex flex-col items-center bg-white px-4 py-24 lg:px-8">
         <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
@@ -446,9 +520,6 @@ export default function LandingPage() {
         <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
           Serve Karnataka’s Favorite Brews
         </h2>
-        {/* <h3 className="mt-4 text-2xl font-bold tracking-tight lg:text-3xl xl:text-4xl">
-          Why Choose Us?
-        </h3> */}
         <p className="mt-4 max-w-4xl text-center">
           Join the Karunaada Cafe family and bring the best of coffee and chai
           to your community. Our franchise model offers the support you need to
@@ -513,6 +584,58 @@ export default function LandingPage() {
       </section>
       <section className="flex flex-col items-center bg-gray-100 px-4 py-24 lg:px-8">
         <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
+          Get Started Today
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-pretty text-center text-foreground/80">
+          Become a franchise member and enjoy the benefits of our plan options.
+        </p>
+        <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-start md:gap-8">
+            {plans.map((plan, index) => (
+              <div
+                key={index}
+                className={`rounded-2xl border-2 ${index === 1 ? "border-red-600 ring-1 ring-red-600 sm:order-last" : "border-gray-300"} p-6 shadow-sm sm:px-8 lg:p-12`}
+              >
+                <div className="text-center">
+                  <h2 className="text-lg font-medium text-gray-900">
+                    {plan.name}
+                    <span className="sr-only">Plan</span>
+                  </h2>
+                  <p className="mt-2 sm:mt-4">
+                    <strong className="text-3xl font-bold text-gray-900 sm:text-4xl">
+                      {plan.price}
+                    </strong>
+                  </p>
+                </div>
+                <ul className="mt-6 space-y-2">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center gap-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="size-5 min-h-5 min-w-5 text-red-700"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M4.5 12.75l6 6 9-13.5"
+                        />
+                      </svg>
+                      <span className="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="flex flex-col items-center bg-gray-200/50 px-4 py-24 lg:px-8">
+        <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
           Let’s Brew a Connection
         </h2>
         <p className="mx-auto mt-4 max-w-4xl text-center text-foreground/80">
@@ -521,52 +644,6 @@ export default function LandingPage() {
           favorite brew, we’re here to help. Visit us at our Bengaluru café or
           reach out online. Together, let’s create something special.
         </p>
-        {/* <p className="mx-auto mt-4 max-w-xl text-left text-xl text-foreground/80">
-          Address: Bus Stop 11,7th Cross,Rukmini Nagara, Main Road, near
-          SAROJINI HEALTH CARE, near Bangalore, Nellagadaranahalli, HMT Layout,
-          Karnataka 560073
-          <br /> Ph no: +91 63607 13172
-          <br /> Email: karunaadacafe@gmail.com
-        </p> */}
-        <div className="grid-cols1 mx-auto mt-8 grid w-full max-w-7xl items-start  justify-start gap-8 md:grid-cols-3">
-          <div className=" flex max-w-md flex-col items-start justify-start gap-4">
-            <div className="flex flex-row items-center justify-center gap-4">
-              <MapIcon className="size-8 transition-all duration-300 ease-in-out hover:text-primary" />
-              <h3 className="text-xl font-medium tracking-tight lg:text-2xl">
-                Address
-              </h3>
-            </div>
-            <p className="pl-12 text-base tracking-tight text-foreground/80">
-              Bus Stop 11,7th Cross,Rukmini Nagara, Main Road, near SAROJINI
-              HEALTH CARE, near Bangalore, Nellagadaranahalli, HMT Layout,
-              Karnataka 560073
-            </p>
-          </div>
-          <div className=" flex max-w-md flex-col items-start justify-start gap-4">
-            <div className="flex flex-row items-center justify-center gap-4">
-              <PhoneIcon className="size-8 transition-all duration-300 ease-in-out hover:text-primary" />
-              <h3 className="text-xl font-medium tracking-tight lg:text-2xl">
-                Phone
-              </h3>
-            </div>
-            <p className="pl-12 text-base tracking-tight text-foreground/80 underline">
-              <Link href={"tel:+916360713172"}>+91 63607 13172</Link>
-            </p>
-          </div>
-          <div className=" flex max-w-md flex-col items-start justify-start gap-4">
-            <div className="flex flex-row items-center justify-center gap-4">
-              <MailIcon className="size-8 transition-all duration-300 ease-in-out hover:text-primary" />
-              <h3 className="text-xl font-medium tracking-tight lg:text-2xl">
-                Email
-              </h3>
-            </div>
-            <p className="pl-12 text-base tracking-tight text-foreground/80 underline">
-              <Link href={"mailto:karunaadacafe@gmail.com"}>
-                karunaadacafe@gmail.com
-              </Link>
-            </p>
-          </div>
-        </div>
       </section>
       <footer className="bg-black px-4 py-8 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -647,28 +724,18 @@ export default function LandingPage() {
           </div>
           <div className="mt-16 flex justify-start space-x-4 text-white/80">
             <a
-              href="#"
+              href="https://www.facebook.com/profile.php?id=61557876203954&mibextid=ZbWKwL"
+              target="_blank"
               className="text-2xl font-extrabold tracking-tight lg:text-3xl xl:text-4xl"
             >
               <FacebookIcon className="size-6 transition-all duration-300 ease-in-out hover:text-primary" />
             </a>
             <a
-              href="#"
-              className="text-2xl font-extrabold tracking-tight lg:text-3xl xl:text-4xl"
-            >
-              <TwitterIcon className="size-6 transition-all duration-300 ease-in-out hover:text-primary" />
-            </a>
-            <a
-              href="#"
+              href="https://www.instagram.com/karunaada_cafe_?igsh=bGExZTA5djZqbW9h"
+              target="_blank"
               className="text-2xl font-extrabold tracking-tight lg:text-3xl xl:text-4xl"
             >
               <InstagramIcon className="size-6 transition-all duration-300 ease-in-out hover:text-primary" />
-            </a>
-            <a
-              href="#"
-              className="text-2xl font-extrabold tracking-tight lg:text-3xl xl:text-4xl"
-            >
-              <YoutubeIcon className="size-6 transition-all duration-300 ease-in-out hover:text-primary" />
             </a>
           </div>
           <p className="mt-8 text-left text-white">
