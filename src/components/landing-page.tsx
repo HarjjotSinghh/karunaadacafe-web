@@ -449,8 +449,8 @@ export default function LandingPage() {
               draggable={false}
               src="/menu-english.jpg"
               alt="Menu"
-              width={400}
-              height={400}
+              width={1920}
+              height={1398}
               className="h-auto w-full select-none lg:max-w-[1000px]"
             />
             <figcaption className="mt-2 text-center text-base text-white/90">
@@ -462,8 +462,8 @@ export default function LandingPage() {
               draggable={false}
               src="/menu.jpg"
               alt="Menu"
-              width={400}
-              height={400}
+              width={1920}
+              height={1398}
               className="h-auto w-full select-none lg:max-w-[1000px]"
             />
             <figcaption className="mt-2 text-center text-base text-white/90">
