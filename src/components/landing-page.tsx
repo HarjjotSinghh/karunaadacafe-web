@@ -15,53 +15,15 @@ import {
   DrawerTrigger,
 } from "./ui/drawer"
 
-const coords = [
-  { left: 192, top: 16 },
-  { left: 240, top: 36 },
-  { left: 185, top: 76 },
-  { left: 250, top: -24 },
-  { left: 230, top: 115 },
-  { left: 129, top: 90 },
-  { left: 140, top: 160 },
-  { left: 215, top: 175 },
-  { left: 170, top: 200 },
-  { left: 140, top: 250 },
-  { left: 180, top: 315 },
-  { left: 190, top: 254 },
-  { left: 110, top: 200 },
-  { left: 65, top: 230 },
-  { left: 140, top: 360 },
-  { left: 195, top: 450 },
-  { left: 235, top: 410 },
-  { left: 270, top: 360 },
-  { left: 325, top: 420 },
-  { left: 315, top: 370 },
-  { left: 280, top: 425 },
-  { left: 180, top: 520 },
-  { left: 130, top: 505 },
-  { left: 144, top: 454 },
-  { left: 90, top: 465 },
-  { left: 60, top: 420 },
-  { left: 40, top: 360 },
-  { left: 30, top: 305 },
-  { left: 10, top: 260 },
-  { left: 50, top: 170 },
-  { left: 0, top: 200 },
-  { left: 15, top: 130 },
-  { left: 60, top: 110 },
-  { left: 95, top: 145 },
-  { left: 180, top: 130 },
-  { left: 80, top: 285 },
-  { left: 125, top: 310 },
-  { left: 85, top: 345 },
-  { left: 210, top: 365 },
-  { left: 170, top: 400 },
-  { left: 110, top: 410 },
-  { left: 250, top: 470 },
-  { left: 220, top: 510 },
+const coords_locations = [
+  { left: 200, top: 120 }, // Yadgiri
+  { left: 80, top: 270 }, // Haveri
+  { left: 180, top: 320 }, // Chitradurga
+  { left: 250, top: 440 }, // Bangalore Urban
+  { left: 230, top: 400 }, // Bangalore Rural
 ]
 
-shuffleArray(coords)
+shuffleArray(coords_locations)
 
 const plans = [
   {
@@ -171,7 +133,7 @@ export default function LandingPage() {
   return (
     <div className="w-full">
       <header className="sticky top-0 z-50 flex items-center justify-between bg-background/90 p-4 shadow-xl shadow-black/[0.01] backdrop-blur">
-        <div className="mx-auto w-full max-w-7xl">
+        <div className="mx-auto flex w-full max-w-7xl flex-row justify-between">
           <div className="flex w-full items-center justify-between space-x-16">
             <Image
               draggable={false}
@@ -182,26 +144,32 @@ export default function LandingPage() {
               className="h-20 w-auto"
             />
             <nav className="hidden space-x-6 lg:flex">
-              <a href="#" className="text-lg font-semibold">
+              <a href="#home" className="text-lg font-semibold">
                 Home
               </a>
-              <a href="#" className="text-lg">
+              <a href="#about" className="text-lg">
                 About Us
               </a>
-              <a href="#" className="text-lg">
+              <a href="#menu" className="text-lg">
                 Menu
               </a>
-              <a href="#" className="text-lg">
+              <a href="#franchise" className="text-lg">
                 Franchise
               </a>
-              <a href="#" className="text-lg">
-                Careers
+              <a href="#story" className="text-lg">
+                Our Story
               </a>
-              <a href="#" className="text-lg">
+              <a href="#gallery" className="text-lg">
                 Gallery
               </a>
-              <a href="#" className="text-lg">
+              <a href="#blog" className="text-lg">
                 Blog
+              </a>
+              <a href="#plans" className="text-lg">
+                Plans
+              </a>
+              <a href="#contact" className="text-lg">
+                Contact Us
               </a>
             </nav>
           </div>
@@ -221,7 +189,7 @@ export default function LandingPage() {
                   draggable={false}
                   src="/logo.png"
                   alt="Logo"
-                  className=" select-none"
+                  className="size-24 select-none"
                   width={230}
                   height={50}
                 />
@@ -229,38 +197,48 @@ export default function LandingPage() {
               <DrawerDescription className="p-4">
                 <ul className="flex flex-col gap-2">
                   <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                    <Link className="w-fit" href={"#"}>
+                    <Link className="w-fit" href="#home">
                       Home
                     </Link>
                   </li>
                   <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                    <Link className="w-fit" href={"#"}>
+                    <Link className="w-fit" href="#about">
                       About Us
                     </Link>
                   </li>
                   <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                    <Link className="w-fit" href={"#"}>
+                    <Link className="w-fit" href="#menu">
                       Menu
                     </Link>
                   </li>
                   <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                    <Link className="w-fit" href={"#"}>
+                    <Link className="w-fit" href="#franchise">
                       Franchise
                     </Link>
                   </li>
                   <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                    <Link className="w-fit" href={"#"}>
-                      Careers
+                    <Link className="w-fit" href="#story">
+                      Our Story
                     </Link>
                   </li>
                   <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                    <Link className="w-fit" href={"#"}>
+                    <Link className="w-fit" href="#gallery">
                       Gallery
                     </Link>
                   </li>
                   <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
-                    <Link className="w-fit" href={"#"}>
+                    <Link className="w-fit" href="#blog">
                       Blog
+                    </Link>
+                  </li>
+                  <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                    <Link className="w-fit" href="#plans">
+                      Plans
+                    </Link>
+                  </li>
+                  <li className="w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary">
+                    <Link className="w-fit" href="#contact">
+                      Contact Us
                     </Link>
                   </li>
                 </ul>
@@ -312,12 +290,10 @@ export default function LandingPage() {
           </Drawer>
         </div>
       </header>
-      <section className="flex flex-col items-center justify-center gap-6 bg-gray-50 px-4 py-24 md:gap-12 lg:gap-16 lg:px-8 xl:flex-row xl:gap-24">
-        {/* <h2 className="hidden text-balance px-4 text-2xl font-extrabold tracking-tighter lg:px-8 lg:text-3xl xl:block">
-          Chitradurga - 1 <br />
-          Yadgiri - 1<br /> Bangalore Urban - 9<br /> Bangalore Rural - 1<br />
-        </h2> */}
-
+      <section
+        id="home"
+        className="flex w-full flex-col items-center justify-center gap-6 bg-gray-50 px-4 py-24 md:gap-12 lg:gap-16 lg:px-8 xl:flex-row xl:gap-24"
+      >
         <div className="flex w-fit flex-col items-start justify-start gap-4">
           <h1 className=" text-left text-4xl font-extrabold tracking-tighter md:text-5xl lg:text-6xl">
             Serving In:
@@ -338,8 +314,8 @@ export default function LandingPage() {
             ))}
           </div>
         </div>
-        <div className="w-fit">
-          <div className="relative mt-8 scale-[80%] sm:scale-100">
+        <div className="w-fit scale-[90%] sm:scale-100">
+          <div className="relative mt-8">
             <Image
               draggable={false}
               src="/karnataka.svg"
@@ -348,8 +324,8 @@ export default function LandingPage() {
               alt="Map"
               className="w-full max-w-sm select-none"
             />
-            <div className="absolute inset-0">
-              {coords.map(({ left, top }, index) => {
+            <div className="sm:left- absolute inset-0 -left-8 scale-[80%] sm:scale-100">
+              {coords_locations.map(({ left, top }, index) => {
                 return (
                   <motion.img
                     custom={index}
@@ -359,12 +335,12 @@ export default function LandingPage() {
                     viewport={{ once: true }}
                     initial="initial"
                     key={index}
-                    src="/cup.svg"
-                    alt="Cup"
+                    src="/pin2.svg"
+                    alt="Pin"
                     width={100}
-                    height={100}
+                    // height={100}
                     style={{ left, top }}
-                    className={`absolute inset-0 z-10 size-14 select-none sm:size-16 `}
+                    className={`absolute inset-0 z-10 size-12 select-none sm:size-16 sm:left-[${left}px] sm:top-[${top}px] left-[${left - 80}px] top-[${top - 80}px]`}
                     draggable={false}
                   />
                 )
@@ -373,22 +349,25 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col items-center bg-white px-4 py-24 lg:px-8">
+      <section
+        id="about"
+        className="flex flex-col items-center bg-white px-4 py-24 lg:px-8"
+      >
         <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
           Welcome To KarunaadaCafe
         </h2>
         <h3 className="mt-4 text-2xl font-bold tracking-tight lg:text-3xl xl:text-4xl">
-          Brewing Karnataka’s Heritage
+          Brewing Karnataka&apos;s Heritage
         </h3>
         <p className="mt-4 max-w-4xl text-center">
-          Step into Karunaada Cafe, where the rich legacy of Karnataka’s coffee
-          culture dances harmoniously with the comforting embrace of chai. Here,
-          every cup is a celebration of tradition and taste, brewed to
-          perfection and served with a touch of Southern warmth. Whether you’re
-          in the mood for the bold notes of our filter coffee or the soothing
-          spices of our masala chai, we’ve got the perfect blend to elevate your
-          day. Pair your drink with our deliciously curated snacks, inspired by
-          the vibrant flavors of Karnataka.
+          Step into Karunaada Cafe, where the rich legacy of Karnataka&apos;s
+          coffee culture dances harmoniously with the comforting embrace of
+          chai. Here, every cup is a celebration of tradition and taste, brewed
+          to perfection and served with a touch of Southern warmth. Whether
+          you&apos;re in the mood for the bold notes of our filter coffee or the
+          soothing spices of our masala chai, we&apos;ve got the perfect blend
+          to elevate your day. Pair your drink with our deliciously curated
+          snacks, inspired by the vibrant flavors of Karnataka.
         </p>
         <img
           draggable={false}
@@ -402,7 +381,7 @@ export default function LandingPage() {
           Read Our Story
         </Button>
       </section>
-      <section className="bg-[#da2a1c] px-4 py-24 lg:px-8">
+      <section id="gallery" className="bg-[#da2a1c] px-4 py-24 lg:px-8">
         <h2 className="text-balance text-center text-center text-3xl font-extrabold tracking-tighter text-white md:text-4xl lg:text-5xl xl:text-6xl">
           Sip, Savor, Share
         </h2>
@@ -415,33 +394,33 @@ export default function LandingPage() {
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <div className="w-full rounded bg-white p-4 sm:w-96">
-            <Image
+            <img
               draggable={false}
               width={1920}
               height={1080}
-              src="/placeholder.png"
+              src="https://st4.depositphotos.com/13349494/25104/i/450/depositphotos_251043176-stock-photo-selective-focus-laptop-blank-screen.jpg"
               alt="News 1"
               className="w-full select-none"
             />
             <p className="mt-4 text-center">News 1</p>
           </div>
           <div className="w-full rounded bg-white p-4 sm:w-96">
-            <Image
+            <img
               draggable={false}
               width={1920}
               height={1080}
-              src="/placeholder.png"
+              src="https://st4.depositphotos.com/13349494/25104/i/450/depositphotos_251043176-stock-photo-selective-focus-laptop-blank-screen.jpg"
               alt="News 2"
               className="w-full select-none"
             />
             <p className="mt-4 text-center">News 2</p>
           </div>
           <div className="w-full rounded bg-white p-4 sm:w-96">
-            <Image
+            <img
               draggable={false}
               width={1920}
               height={1080}
-              src="/placeholder.png"
+              src="https://st4.depositphotos.com/13349494/25104/i/450/depositphotos_251043176-stock-photo-selective-focus-laptop-blank-screen.jpg"
               alt="News 3"
               className="w-full select-none"
             />
@@ -449,7 +428,10 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col items-center bg-black px-4 py-24 lg:px-8">
+      <section
+        id="menu"
+        className="flex flex-col items-center bg-black px-4 py-24 lg:px-8"
+      >
         <h2 className="text-balance  text-center text-3xl font-extrabold tracking-tighter text-white md:text-4xl lg:text-5xl xl:text-6xl">
           Brewed to Perfection, Served with Love
         </h2>
@@ -490,17 +472,20 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col items-center bg-white px-4 py-24 lg:px-8">
+      <section
+        id="story"
+        className="flex flex-col items-center bg-white px-4 py-24 lg:px-8"
+      >
         <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
           From Coffee Hearts to Chai Souls
         </h2>
         <p className="mt-4 max-w-4xl text-center">
           Karunaada Cafe was born out of a passion for creating a space where
           coffee and chai lovers can unite. Starting in the heart of Karnataka,
-          where coffee reigns supreme, we’ve expanded our menu to include chai
-          that’s just as comforting and flavorful. Our journey is about bridging
-          the gap between these two beloved beverages and offering a place where
-          everyone feels at home.
+          where coffee reigns supreme, we&apos;ve expanded our menu to include
+          chai that&apos;s just as comforting and flavorful. Our journey is
+          about bridging the gap between these two beloved beverages and
+          offering a place where everyone feels at home.
         </p>
         <img
           draggable={false}
@@ -517,16 +502,19 @@ export default function LandingPage() {
           Know More!
         </Button>
       </section>
-      <section className="flex flex-col items-center bg-gray-100 px-4 py-24 lg:px-8">
+      <section
+        id="franchise"
+        className="flex flex-col items-center bg-gray-100 px-4 py-24 lg:px-8"
+      >
         <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
-          Serve Karnataka’s Favorite Brews
+          Serve Karnataka&apos;s Favorite Brews
         </h2>
         <p className="mt-4 max-w-4xl text-center">
           Join the Karunaada Cafe family and bring the best of coffee and chai
           to your community. Our franchise model offers the support you need to
-          create a thriving café that celebrates Karnataka’s dual love for these
-          beverages. Be part of a growing network that’s redefining café culture
-          in the South.
+          create a thriving café that celebrates Karnataka&apos;s dual love for
+          these beverages. Be part of a growing network that&apos;s redefining
+          café culture in the South.
         </p>
         <img
           draggable={false}
@@ -537,7 +525,7 @@ export default function LandingPage() {
           className="mt-8 w-full max-w-4xl select-none rounded-lg shadow-xl shadow-black/[0.05]"
         />
       </section>
-      <section className="bg-[#da2a1c] px-4 py-24 lg:px-8">
+      <section id="blog" className="bg-[#da2a1c] px-4 py-24 lg:px-8">
         <h2 className="text-balance text-center text-center text-3xl font-extrabold tracking-tighter text-white md:text-4xl lg:text-5xl xl:text-6xl">
           Brewing Stories, One Sip at a Time
         </h2>
@@ -549,33 +537,33 @@ export default function LandingPage() {
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <div className="w-full rounded bg-white p-4 sm:w-96">
-            <Image
+            <img
               draggable={false}
               width={1920}
               height={1080}
-              src="/placeholder.png"
+              src="https://cdn.pixabay.com/photo/2016/11/29/12/54/cafe-1869656_640.jpg"
               alt="Story 1"
               className="w-full select-none"
             />
             <p className="mt-4 text-center">Story 1</p>
           </div>
           <div className="w-full rounded bg-white p-4 sm:w-96">
-            <Image
+            <img
               draggable={false}
               width={1920}
               height={1080}
-              src="/placeholder.png"
+              src="https://cdn.pixabay.com/photo/2016/11/29/12/54/cafe-1869656_640.jpg"
               alt="Story 2"
               className="w-full select-none"
             />
             <p className="mt-4 text-center">Story 2</p>
           </div>
           <div className="w-full rounded bg-white p-4 sm:w-96">
-            <Image
+            <img
               draggable={false}
               width={1920}
               height={1080}
-              src="/placeholder.png"
+              src="https://cdn.pixabay.com/photo/2016/11/29/12/54/cafe-1869656_640.jpg"
               alt="Story 3"
               className="w-full select-none"
             />
@@ -583,7 +571,10 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col items-center bg-gray-100 px-4 py-24 lg:px-8">
+      <section
+        id="plans"
+        className="flex flex-col items-center bg-gray-100 px-4 py-24 lg:px-8"
+      >
         <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
           Get Started Today
         </h2>
@@ -635,15 +626,19 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="flex flex-col items-center bg-gray-200/50 px-4 py-24 lg:px-8">
+      <section
+        id="contact"
+        className="flex flex-col items-center bg-gray-200/50 px-4 py-24 lg:px-8"
+      >
         <h2 className="text-balance text-center text-3xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl">
-          Let’s Brew a Connection
+          Let&apos;s Brew a Connection
         </h2>
         <p className="mx-auto mt-4 max-w-4xl text-center text-foreground/80">
-          We’d love to hear from you! Whether you’re curious about our menu,
-          interested in franchise opportunities, or just want to chat about your
-          favorite brew, we’re here to help. Visit us at our Bengaluru café or
-          reach out online. Together, let’s create something special.
+          We&apos;d love to hear from you! Whether you&apos;re curious about our
+          menu, interested in franchise opportunities, or just want to chat
+          about your favorite brew, we&apos;re here to help. Visit us at our
+          Bengaluru café or reach out online. Together, let&apos;s create
+          something special.
         </p>
       </section>
       <footer className="bg-black px-4 py-8 lg:px-8">
@@ -701,12 +696,6 @@ export default function LandingPage() {
                   className="transition-all duration-300 ease-in-out hover:text-primary"
                 >
                   Franchise
-                </Link>
-                <Link
-                  href={"#"}
-                  className="transition-all duration-300 ease-in-out hover:text-primary"
-                >
-                  Careers
                 </Link>
                 <Link
                   href={"#"}
