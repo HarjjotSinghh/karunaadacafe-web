@@ -1,10 +1,13 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { FacebookIcon, Instagram, InstagramIcon, Linkedin } from "lucide-react"
 import { RxHamburgerMenu } from "react-icons/rx"
+
+import { cn } from "@/lib/utils"
 
 import { Button } from "./ui/button"
 import {
@@ -16,12 +19,79 @@ import {
 } from "./ui/drawer"
 
 const coords_locations = [
-  { left: 200, top: 120 }, // Yadgiri
-  { left: 80, top: 270 }, // Haveri
-  { left: 180, top: 320 }, // Chitradurga
-  { left: 250, top: 440 }, // Bangalore Urban
-  { left: 230, top: 400 }, // Bangalore Rural
+  {
+    name: "Yadgiri",
+    lg: {
+      left: 280,
+      top: 135,
+    },
+    sm: {
+      left: 220,
+      top: 87,
+    },
+  }, // Yadgiri
+  {
+    name: "Haveri",
+    lg: {
+      left: 128,
+      top: 350,
+    },
+    sm: {
+      left: 117,
+      top: 232,
+    },
+  }, // Haveri
+  {
+    name: "Chitradurga",
+    lg: {
+      left: 235,
+      top: 420,
+    },
+    sm: {
+      left: 190,
+      top: 280,
+    },
+  }, // Chitradurga
+  {
+    name: "Bangalore Urban",
+    lg: {
+      left: 368,
+      top: 550,
+    },
+    sm: {
+      left: 278,
+      top: 370,
+    },
+  }, // Bangalore Urban
+  {
+    name: "Bangalore Rural",
+    lg: {
+      left: 340,
+      top: 525,
+    },
+    sm: {
+      left: 255,
+      top: 350,
+    },
+  }, // Bangalore Rural
 ]
+
+const getMarginFromLocationName = (name: string) => {
+  switch (name) {
+    case "Yadgiri":
+      return "ml-2.5"
+    case "Haveri":
+      return "ml-2.5"
+    case "Chitradurga":
+      return "-ml-2"
+    case "Bangalore Urban":
+      return "-ml-6"
+    case "Bangalore Rural":
+      return "ml-0"
+    default:
+      return "ml-0"
+  }
+}
 
 shuffleArray(coords_locations)
 
@@ -130,6 +200,19 @@ function shuffleArray(array: any[]) {
 }
 
 export default function LandingPage() {
+  const [isScreenSizeSmall, setIsScreenSizeSmall] = useState(false)
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setIsScreenSizeSmall(window.innerWidth < 640)
+    })
+    setIsScreenSizeSmall(window.innerWidth < 640)
+    return () => {
+      window.removeEventListener("resize", () => {
+        setIsScreenSizeSmall(window.innerWidth < 640)
+      })
+    }
+  }, [])
   return (
     <div className="w-full">
       <header className="sticky top-0 z-50 flex items-center justify-between bg-background/90 p-4 shadow-xl shadow-black/[0.01] backdrop-blur">
@@ -292,13 +375,13 @@ export default function LandingPage() {
       </header>
       <section
         id="home"
-        className="flex w-full flex-col items-center justify-center gap-6 bg-gray-50 px-4 py-24 md:gap-12 lg:gap-16 lg:px-8 xl:flex-row xl:gap-24"
+        className="flex w-full flex-col items-center justify-center gap-6 bg-gray-50 px-0 py-24 md:gap-12 lg:gap-16 lg:px-8 xl:flex-row xl:gap-24"
       >
         <div className="flex w-fit flex-col items-start justify-start gap-4">
           <h1 className=" text-left text-4xl font-extrabold tracking-tighter md:text-5xl lg:text-6xl">
             Serving In:
           </h1>
-          <div className="flex flex-col items-start justify-start gap-4">
+          {/* <div className="flex flex-col items-start justify-start gap-4">
             {outlets.map((outlet, index) => (
               <div
                 key={index}
@@ -312,37 +395,51 @@ export default function LandingPage() {
                 </h2>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
-        <div className="w-fit scale-[90%] sm:scale-100">
+        <div className="scale-100 sm:scale-[80%]">
           <div className="relative mt-8">
             <Image
               draggable={false}
-              src="/karnataka.svg"
-              width={1000}
-              height={3000}
+              src="/karnataka2.svg"
+              width={2000}
+              height={6000}
               alt="Map"
-              className="w-full max-w-sm select-none"
+              className="w-[340px] select-none sm:w-[500px]"
             />
-            <div className="sm:left- absolute inset-0 -left-8 scale-[80%] sm:scale-100">
-              {coords_locations.map(({ left, top }, index) => {
+            <div className="absolute inset-0 -left-8 origin-top scale-100 sm:left-0 sm:scale-[100%]">
+              {coords_locations.map(({ name, lg, sm }, index) => {
                 return (
-                  <motion.img
-                    custom={index}
-                    variants={scaleUpVariants}
-                    transition={{ ease: "circInOut" }}
-                    whileInView="animate"
-                    viewport={{ once: true }}
-                    initial="initial"
+                  <div
+                    className={cn(`absolute inset-0 z-10 min-w-fit`)}
+                    style={isScreenSizeSmall ? sm : lg}
                     key={index}
-                    src="/pin2.svg"
-                    alt="Pin"
-                    width={100}
-                    // height={100}
-                    style={{ left, top }}
-                    className={`absolute inset-0 z-10 size-12 select-none sm:size-16 sm:left-[${left}px] sm:top-[${top}px] left-[${left - 80}px] top-[${top - 80}px]`}
-                    draggable={false}
-                  />
+                  >
+                    <motion.img
+                      custom={index}
+                      variants={scaleUpVariants}
+                      transition={{ ease: "circInOut" }}
+                      whileInView="animate"
+                      viewport={{ once: true }}
+                      initial="initial"
+                      key={index}
+                      src="/pin2.svg"
+                      alt="Pin"
+                      width={100}
+                      // height={100}
+                      className={` size-12 select-none sm:size-16 `}
+                      draggable={false}
+                    />
+                    {/* <p
+                      className={cn(
+                        `text-balance text-sm font-semibold tracking-tighter text-[#e13a49] lg:text-base xl:block`,
+                        name !== "Bangalore Rural" &&
+                          getMarginFromLocationName(name)
+                      )}
+                    >
+                      {name}
+                    </p> */}
+                  </div>
                 )
               })}
             </div>
@@ -684,30 +781,60 @@ export default function LandingPage() {
               <h3 className="text-xl font-extrabold tracking-tight lg:text-2xl">
                 Quick Links
               </h3>
-              <div className="flex flex-col items-start justify-start gap-2 text-white/80">
+              <div className="grid grid-cols-2 gap-x-24 gap-y-2 text-white/80">
                 <Link
-                  href={"#"}
+                  href="#home"
                   className="transition-all duration-300 ease-in-out hover:text-primary"
                 >
-                  Contact
+                  Home
                 </Link>
                 <Link
-                  href={"#"}
+                  href="#about"
+                  className="transition-all duration-300 ease-in-out hover:text-primary"
+                >
+                  About Us
+                </Link>
+                <Link
+                  href="#menu"
+                  className="transition-all duration-300 ease-in-out hover:text-primary"
+                >
+                  Menu
+                </Link>
+                <Link
+                  href="#franchise"
                   className="transition-all duration-300 ease-in-out hover:text-primary"
                 >
                   Franchise
                 </Link>
                 <Link
-                  href={"#"}
+                  href="#story"
+                  className="transition-all duration-300 ease-in-out hover:text-primary"
+                >
+                  Our Story
+                </Link>
+                <Link
+                  href="#gallery"
                   className="transition-all duration-300 ease-in-out hover:text-primary"
                 >
                   Gallery
                 </Link>
                 <Link
-                  href={"#"}
+                  href="#blog"
                   className="transition-all duration-300 ease-in-out hover:text-primary"
                 >
                   Blog
+                </Link>
+                <Link
+                  href="#plans"
+                  className="transition-all duration-300 ease-in-out hover:text-primary"
+                >
+                  Plans
+                </Link>
+                <Link
+                  href="#contact"
+                  className="transition-all duration-300 ease-in-out hover:text-primary"
+                >
+                  Contact Us
                 </Link>
               </div>
             </div>
